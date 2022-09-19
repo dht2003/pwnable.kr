@@ -1,0 +1,5 @@
+Mistake in operator priority causes the program to read from stdout instsead of password file 
+
+
+First Input: AAAAAAAAAA
+Second Input : @@@@@@@@@@
