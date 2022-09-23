@@ -1,0 +1,5 @@
+We can see that we can bet any amount of money we want 
+than the program check if the amount we bet is smaller than our balance.
+we can bet a negative number which casus the program to give us money when we lose 
+instade of subtracting it in line 577
+( double negation is posative) 
