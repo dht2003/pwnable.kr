@@ -1,0 +1,2 @@
+Run /cmd1 /usr/bin/python because python is'nt blacklisted 
+then open flag with python f=open("flag", "r") and f.read()
