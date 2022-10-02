@@ -1,0 +1,2 @@
+run ./uaf 4 exploit.txt 
+in the prompt use 3 , 2 , 2 ,1 and then u get the shell
