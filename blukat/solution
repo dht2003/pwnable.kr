@@ -1,0 +1,2 @@
+This challenge is a troll. All you need to to do ls -la and check the premissions of password.
+We can see that we have premission to print the password. The password is : cat: password: Permission denied. At first it looks like a standart massage that show up when u try to print file without premmisions but after looking at the file premissions and double checking with xxd password I figured out that the password is "cat: password: Permission denied"
