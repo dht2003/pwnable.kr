@@ -1,0 +1,22 @@
+ebp address = 0xffffdbc8
+start buffer = 0xffffdb54
+target address = 0xffffdbcc
+offset = 0x78 = 120
+
+A_address = 0x809fe4b
+B_address = 0x809fe6a
+C_address = 0x809fe89
+D_address = 0x809fea8
+E_address = 0x809fec7
+F_address = 0x809fee6
+G_address = 0x809ff05
+
+
+
+breakpoints : 
+*(main+216)
+*(ropme+224)
+*(ropme +223)
+*(ropme + 359)
+*(ropme) 
+
