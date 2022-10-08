@@ -1,0 +1,17 @@
+offset = 96 
+
+the last 4 control the value of passcode1 
+
+
+flush got.plt address = 0x804a004
+
+print flag address = 0x080485e3
+
+
+breakpoints :
+
+*(main+3)
+*(main + 26)
+*(login + 34)
+*(login + 39)
+
