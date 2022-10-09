@@ -1,0 +1,2 @@
+Compiled shellcode.asm with: nasm -f bin -o solution.bin ./shellcode.asm
+Than:  run nc pwnable.kr 9026 < solution.bin
