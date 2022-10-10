@@ -1,0 +1,2 @@
+We  avoid the word filter by seperating the words with printf like that : printf "%s%s" "ca" "t" 
+we  avoid the symbol filter by printing the / with its octal value : printf "\\$(printf %o 47)"
