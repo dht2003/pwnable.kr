@@ -82,14 +82,3 @@ Some potential gadgets:
 0x00176951 : inc esi ; or ebp, dword ptr [ebp + 0xa] ; ret
 0x0018fe7c : inc esi ; or ebp, dword ptr [ebx + 0xa] ; ret
 
-After further resarch it seems that the value of esi is already set by csu_init so no need to change it.
-
-
-I probably should use getchar instead of changhing the address with + and - .
-
-
-The current attack flow:
-
-
-Leak libc with putchar ---> change the address of putchar to start ---> restart the program --->
-Change the address of putchar to the address of the gadget (using getchar) ----> trigger the gaddget.
